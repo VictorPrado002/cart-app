@@ -1,69 +1,28 @@
+import { useEffect, useState } from "react";
+import { getProducts } from "./services/productService";
+
 export const CartApp =() =>{
+    const [products,setProducts] = useState([]);
+    useEffect(()=>{
+        setProducts(getProducts());
+    },[]);
     return (
     <>
     <div className="container">
     <h3 className="h1 text-center">Cart App</h3>
         <div className="row">
-            <div className="col-4 my-3">
-                <div className="card">
+                {products.map(prod => (                    
+            <div className="col-4 my-3" key={prod.id}>
+                        <div className="card">
                     <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
+                        <h5 className="card-title">{prod.name}</h5>
+                        <p className="card-text">{prod.description}</p>
+                        <p className="card-text">{prod.price}</p>
                         <button className="btn btn-primary">Agregar</button>
                     </div>
                 </div>
             </div>
-            <div className="col-4 my-3">
-                <div className="card">
-                    <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
-                        <button className="btn btn-primary">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div className="col-4 my-3">
-                <div className="card">
-                    <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
-                        <button className="btn btn-primary">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div className="col-4 my-3">
-                <div className="card">
-                    <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
-                        <button className="btn btn-primary">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div className="col-4 my-3">
-                <div className="card">
-                    <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
-                        <button className="btn btn-primary">Agregar</button>
-                    </div>
-                </div>
-            </div>
-            <div className="col-4 my-3">
-                <div className="card">
-                    <div className="card-body">
-                        <h5 className="card-title">Teclado Mecanico RGB</h5>
-                        <p className="card-text">Teclado Mecanico con luces RGB switches cherry red.</p>
-                        <p className="card-text">$1000</p>
-                        <button className="btn btn-primary">Agregar</button>
-                    </div>
-                </div>
-            </div>
+                ))}
         </div>
         <div className="my-4 w-50">
             <h3>Carro de compras</h3>
