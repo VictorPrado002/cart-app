@@ -1,13 +1,9 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { CartView } from "./components/CartView";
 import { CatalogView } from "./components/CatalogView";
 
-const initialCartItems=[
-    // {
-    //     product:{},
-    //     quantity:0,
-    // },
-]
+const initialCartItems= JSON.parse(sessionStorage.getItem('cart'))|| [];
+
 export const CartApp =() =>{
     const [cartItems,setCartItems] =useState(initialCartItems);
     
@@ -49,7 +45,7 @@ export const CartApp =() =>{
 
     return (
     <>
-    <div className="container">
+    <div className="container my-4">
     <h3 className="h1 text-center">Cart App</h3>
             
        <CatalogView 
